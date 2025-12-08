@@ -2,36 +2,47 @@ package h1;
 
 public class Bruch {
 
-	public int zaehler;
-	public int nenner;
+    public int zaehler;
+    public int nenner;
 
-	public Bruch(int zaehler, int nenner) {
-		this.zaehler = zaehler;
-		this.nenner = nenner;
-	}
+   
+    public Bruch(int zaehler, int nenner) {
+        this.zaehler = zaehler;
+        this.nenner = nenner;
+    }
 
-	private int ggT(int x, int y) {
+    
+    private int ggT(int x, int y) {
+       
+        if (x < 0) {
+            x = -x;
+        }
+        if (y < 0) {
+            y = -y;
+        }
 
-		x = Math.abs(x);
-		y = Math.abs(y);
+       
+        while (y != 0) {
+            int rest = x % y;
+            x = y;
+            y = rest;
+        }
 
-		while (y != 0) {
-			int rest = x % y;
-			x = y;
-			y = rest;
-		}
+       
+        return x;
+    }
 
-		return x;
-	}
+  
+    public void shorten() {
+        int g = ggT(zaehler, nenner);
+       
+        zaehler = zaehler / g;
+        nenner = nenner / g;
+    }
 
-	public void shorten() {
-		int g = ggT(zaehler, nenner);
-
-		zaehler = zaehler / g;
-		nenner = nenner / g;
-	}
-
-	public boolean hasSameValueAs(Bruch b) {
-		return this.zaehler * b.nenner == this.nenner * b.zaehler;
-	}
+   
+    public boolean hasSameValueAs(Bruch b) {
+       
+        return this.zaehler * b.nenner == this.nenner * b.zaehler;
+    }
 }

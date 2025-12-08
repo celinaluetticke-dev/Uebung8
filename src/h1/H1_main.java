@@ -1,15 +1,23 @@
 package h1;
 
 public class H1_main {
-    public static void main(String[] args) {
 
-        Bruch b1 = new Bruch(8, 12);
-        b1.shorten();
-        System.out.println(b1.zaehler + "/" + b1.nenner); // 2/3
+	public static void main(String[] args) {
 
-        Bruch b2 = new Bruch(5, 3);
-        Bruch b3 = new Bruch(15, 9);
+		Bruch b1 = new Bruch(8, 12);
+		Bruch b2 = new Bruch(15, 9);
 
-        System.out.println(b2.hasSameValueAs(b3)); // true
-    }
+		System.out.println("eingegebener Bruch 1: " + b1.zaehler + "/" + b1.nenner);
+		System.out.println("eingegebener Bruch 2: " + b2.zaehler + "/" + b2.nenner);
+
+		b1.shorten();
+		b2.shorten();
+
+		System.out.println("gekuerzter Bruch 1: " + b1.zaehler + "/" + b1.nenner);
+		System.out.println("gekuerzter Bruch 2: " + b2.zaehler + "/" + b2.nenner);
+
+		boolean gleich = b1.hasSameValueAs(b2);
+
+		System.out.println("Haben beide Brüche den gleichen Wert? " + gleich);
+	}
 }
